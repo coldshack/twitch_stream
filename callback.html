@@ -12,6 +12,7 @@
     <script>
         const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Same as before
 
+                
         if (window.location.hash) {
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
@@ -26,14 +27,10 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.data && data.data.length > 0) {
-                        const userId = data.data[0].id;
-                        document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
-                    } else {
-                        document.getElementById('user-id').textContent = 'Failed to fetch user data';
-                    }
+                    const userId = data.data[0].id;
+                    document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
                 })
-                .catch(error => document.getElementById('user-id').textContent = `Error: ${error.message}`);
+                .catch(error => console.error('Error fetching user data:', error));
             }
         }
 
