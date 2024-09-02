@@ -57,7 +57,9 @@
 
         #controls {
             flex: 1;
-            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
         #menu button, #controls button {
@@ -65,8 +67,23 @@
             padding: 10px 20px;
         }
 
+        #theme-slider-container {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
         #theme-slider {
             width: 150px;
+            margin-right: 10px;
+        }
+
+        #theme-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            font-size: 12px;
+            color: #555;
         }
 
         .bg-light {
@@ -106,12 +123,14 @@
             <button id="socials-btn">Socials</button>
         </div>
         <div id="controls">
-            <input type="range" id="theme-slider" min="1" max="3" value="1" list="tickmarks">
-            <datalist id="tickmarks">
-                <option value="1" label="Light">
-                <option value="2" label="Dawn">
-                <option value="3" label="Night">
-            </datalist>
+            <div id="theme-slider-container">
+                <input type="range" id="theme-slider" min="1" max="3" value="1">
+                <div id="theme-labels">
+                    <span>Light</span>
+                    <span>Dawn</span>
+                    <span>Night</span>
+                </div>
+            </div>
             <button id="profile-btn" style="display: none;">Profile</button>
             <button id="connect-btn">Connect to Twitch</button>
         </div>
