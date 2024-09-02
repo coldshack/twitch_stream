@@ -77,7 +77,15 @@
             width: 150px;
             margin-right: 10px;
         }
-
+        
+        #theme-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            font-size: 12px;
+            color: #555;
+        }
+        
         .bg-light {
             --header-bg: #f0f0f0;
             background-image: url('images/pexels-photo-6128375.jpg');
@@ -116,7 +124,13 @@
         </div>
         <div id="controls">
             <div id="theme-slider-container">
+                <div class="theme-labels">
+                    <span>Light Mode</span>
+                </div>
                 <input type="range" id="theme-slider" min="1" max="3" value="1">
+                <div class="theme-labels">
+                    <span>Dark Mode</span>
+                </div>
             </div>
             <button id="profile-btn" style="display: none;">Profile</button>
             <button id="connect-btn">Connect to Twitch</button>
