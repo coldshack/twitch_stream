@@ -39,7 +39,7 @@
     <script>
         const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Replace with your Twitch Client ID
         const redirectUri = 'https://coldshack.github.io/twitch_stream/callback'; // Replace with your GitHub Pages URL
-        const scope = 'user:read:email'; // Adjust scopes as needed
+        const scope = 'user:read:chat'; // Adjust scopes as needed
 
         document.getElementById('twitch-login').onclick = function() {
             const authUrl = `https://id.twitch.tv/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
