@@ -9,11 +9,16 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
         }
         #content {
             padding-top: 60px; /* Adjust based on header height */
             align-items: center;
+        }
+        #full-height-iframe {
+            height: 100%;
+            width: 100%;
+            border: none; /* Removes the default border */
         }
         /* Basic styling for the header */
         #header {
@@ -143,9 +148,8 @@
         <!-- Embedding the Twitch stream -->
         <div style="width: 70%; display: flex; justify-content: center;">
             <iframe
+                id="full-height-iframe"
                 src="https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io"
-                height="480"
-                width="720"
                 frameborder="0"
                 scrolling="no"
                 allowfullscreen="true">
@@ -153,11 +157,10 @@
         </div>
 
         <!-- Embedding the Twitch chat -->
-        <div style="width: 30%; display: flex; justify-content: center; margin-top: 20px;">
+        <div style="width: 30%; display: flex; justify-content: center">
             <iframe
+                id="full-height-iframe"
                 src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io"
-                height="480"
-                width="350"
                 frameborder="0"
                 scrolling="no">
             </iframe>
