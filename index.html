@@ -14,11 +14,120 @@
         #content {
             padding-top: 60px; /* Adjust based on header height */
         }
+        /* Basic styling for the header */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: var(--header-bg, #fff); /* Default header background */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #logo {
+            flex: 1;
+        }
+
+        #menu {
+            flex: 2;
+            text-align: center;
+        }
+
+        #controls {
+            flex: 1;
+            text-align: right;
+        }
+
+        #menu button, #controls button {
+            margin: 0 5px;
+            padding: 10px 20px;
+        }
+
+        .bg-light {
+            --header-bg: #f0f0f0;
+            background-image: url('images/pexels-photo-6128375.jpg');
+        }
+
+        .bg-dawn {
+            --header-bg: #fffbf0;
+            background-image: url('images/pexels-photo-1139541.jpg');
+        }
+
+        .bg-night {
+            --header-bg: #2c3e50;
+            background-image: url('images/pexels-rachel-claire-5531009.jpg');
+        }
+
+        /* Additional styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body>
-    <!-- Include the header -->
-    <iframe src="header.html" style="border: none; width: 100%; height: 60px;"></iframe>
+    <header id="header">
+        <div id="logo">
+            <img src="path/to/logo.png" alt="Logo" height="40">
+        </div>
+        <div id="menu">
+            <button id="home-btn">Home</button>
+            <button id="bot-functions-btn">Bot Functionalities</button>
+            <button id="bot-redeems-btn">Bot Channel Point Redeems</button>
+            <button id="socials-btn">Socials</button>
+        </div>
+        <div id="controls">
+            <button id="light-mode-btn">Light</button>
+            <button id="dawn-mode-btn">Dawn</button>
+            <button id="night-mode-btn">Night</button>
+            <button id="profile-btn" style="display: none;">Profile</button>
+            <button id="connect-btn">Connect to Twitch</button>
+        </div>
+    </header>
+
+    <script>
+        const lightModeBtn = document.getElementById('light-mode-btn');
+        const dawnModeBtn = document.getElementById('dawn-mode-btn');
+        const nightModeBtn = document.getElementById('night-mode-btn');
+        const connectBtn = document.getElementById('connect-btn');
+        const profileBtn = document.getElementById('profile-btn');
+
+        // Retrieve user ID from localStorage
+        const userId = localStorage.getItem('twitchUserId');
+
+        if (userId) {
+            connectBtn.style.display = 'none';
+            profileBtn.style.display = 'block';
+        }
+
+        lightModeBtn.onclick = function() {
+            document.body.className = 'bg-light';
+        };
+
+        dawnModeBtn.onclick = function() {
+            document.body.className = 'bg-dawn';
+        };
+
+        nightModeBtn.onclick = function() {
+            document.body.className = 'bg-night';
+        };
+
+        connectBtn.onclick = function() {
+            const redirectUri = 'https://coldshack.github.io/twitch_stream/callback';
+            const scope = 'user:read:chat'; // Adjust scopes as needed
+            const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Replace with your Twitch Client ID
+            const authUrl = `https://id.twitch.tv/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+            window.location.href = authUrl;
+        };
+
+        profileBtn.onclick = function() {
+            window.location.href = 'https://coldshack.github.io/twitch_stream'; // Replace with profile page URL
+        };
+    </script>
 
     <div id="content">
         <h1>Welcome to My Twitch Stream</h1>
