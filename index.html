@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Twitch Stream</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #twitch-login {
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to My Twitch Stream</h1>
@@ -41,8 +53,14 @@
 
         // Retrieve user ID from localStorage
         const userId = localStorage.getItem('twitchUserId');
+        const userIdElement = document.getElementById('user-id');
+        const loginButton = document.getElementById('twitch-login');
+
         if (userId) {
-            document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
+            userIdElement.textContent = `Your Twitch User ID is: ${userId}`;
+            loginButton.style.display = 'none'; // Hide the login button if user ID is present
+        } else {
+            loginButton.style.display = 'block'; // Show the login button if user ID is not present
         }
 
         document.getElementById('twitch-login').onclick = function() {
