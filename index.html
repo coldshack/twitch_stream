@@ -21,9 +21,15 @@
             padding-top: 60px; /* Adjust based on header height */
         }
 
-        #stream-container, #chat-container {
+        #stream-container {
             height: 100%;
-            width: 50%;
+            width: 70%; /* Set stream to 70% width */
+            border: none; /* Removes the default border */
+        }
+
+        #chat-container {
+            height: 100%;
+            width: 30%; /* Set chat to 30% width */
             border: none; /* Removes the default border */
         }
 
@@ -110,7 +116,6 @@
             id="stream-container"
             src="https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io"
             frameborder="0"
-            width="70%"
             scrolling="no"
             allowfullscreen="true">
         </iframe>
@@ -120,7 +125,6 @@
             id="chat-container"
             src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io"
             frameborder="0"
-            width="30%"
             scrolling="no">
         </iframe>
     </div>
