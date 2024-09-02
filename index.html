@@ -65,6 +65,10 @@
             padding: 10px 20px;
         }
 
+        #theme-slider {
+            width: 150px;
+        }
+
         .bg-light {
             --header-bg: #f0f0f0;
             background-image: url('images/pexels-photo-6128375.jpg');
@@ -102,9 +106,12 @@
             <button id="socials-btn">Socials</button>
         </div>
         <div id="controls">
-            <button id="light-mode-btn">Light</button>
-            <button id="dawn-mode-btn">Dawn</button>
-            <button id="night-mode-btn">Night</button>
+            <input type="range" id="theme-slider" min="1" max="3" value="1" list="tickmarks">
+            <datalist id="tickmarks">
+                <option value="1" label="Light">
+                <option value="2" label="Dawn">
+                <option value="3" label="Night">
+            </datalist>
             <button id="profile-btn" style="display: none;">Profile</button>
             <button id="connect-btn">Connect to Twitch</button>
         </div>
@@ -130,9 +137,7 @@
     </div>
 
     <script>
-        const lightModeBtn = document.getElementById('light-mode-btn');
-        const dawnModeBtn = document.getElementById('dawn-mode-btn');
-        const nightModeBtn = document.getElementById('night-mode-btn');
+        const themeSlider = document.getElementById('theme-slider');
         const connectBtn = document.getElementById('connect-btn');
         const profileBtn = document.getElementById('profile-btn');
 
@@ -144,16 +149,18 @@
             profileBtn.style.display = 'block';
         }
 
-        lightModeBtn.onclick = function() {
-            document.body.className = 'bg-light';
-        };
-
-        dawnModeBtn.onclick = function() {
-            document.body.className = 'bg-dawn';
-        };
-
-        nightModeBtn.onclick = function() {
-            document.body.className = 'bg-night';
+        themeSlider.oninput = function() {
+            switch (this.value) {
+                case '1':
+                    document.body.className = 'bg-light';
+                    break;
+                case '2':
+                    document.body.className = 'bg-dawn';
+                    break;
+                case '3':
+                    document.body.className = 'bg-night';
+                    break;
+            }
         };
 
         connectBtn.onclick = function() {
