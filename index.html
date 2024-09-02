@@ -5,70 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Twitch Stream</title>
     <style>
-        /* Basic styling for the page */
+        /* Ensure that header is correctly positioned */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
-        #twitch-login {
-            margin: 20px;
+        #content {
+            padding-top: 60px; /* Adjust based on header height */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Twitch Stream</h1>
+    <!-- Include the header -->
+    <iframe src="header.html" style="border: none; width: 100%; height: 60px;"></iframe>
 
-    <!-- Button to initiate Twitch login -->
-    <button id="twitch-login">Connect with Twitch</button>
+    <div id="content">
+        <h1>Welcome to My Twitch Stream</h1>
+        <p id="user-id">Your Twitch User ID will be displayed here.</p>
 
-    <p id="user-id">Your Twitch User ID will be displayed here.</p>
+        <!-- Embedding the Twitch stream -->
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <iframe
+                src="https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io"
+                height="480"
+                width="720"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true">
+            </iframe>
+        </div>
 
-    <!-- Embedding the Twitch stream -->
-    <div style="width: 100%; display: flex; justify-content: center;">
-        <iframe
-            src="https://player.twitch.tv/?channel=Hot_Shack&parent=coldshack.github.io"
-            height="480"
-            width="720"
-            frameborder="0"
-            scrolling="no"
-            allowfullscreen="true">
-        </iframe>
-    </div>
-
-    <!-- Embedding the Twitch chat -->
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-        <iframe
-            src="https://www.twitch.tv/embed/Hot_Shack/chat?parent=coldshack.github.io"
-            height="480"
-            width="350"
-            frameborder="0"
-            scrolling="no">
-        </iframe>
+        <!-- Embedding the Twitch chat -->
+        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+            <iframe
+                src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io"
+                height="480"
+                width="350"
+                frameborder="0"
+                scrolling="no">
+            </iframe>
+        </div>
     </div>
 
     <script>
-        const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Replace with your Twitch Client ID
-
         // Retrieve user ID from localStorage
         const userId = localStorage.getItem('twitchUserId');
-        const userIdElement = document.getElementById('user-id');
-        const loginButton = document.getElementById('twitch-login');
-
         if (userId) {
-            userIdElement.textContent = `Your Twitch User ID is: ${userId}`;
-            loginButton.style.display = 'none'; // Hide the login button if user ID is present
-        } else {
-            loginButton.style.display = 'block'; // Show the login button if user ID is not present
+            document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
+            document.getElementById('connect-btn').style.display = 'none';
+            document.getElementById('profile-btn').style.display = 'block';
         }
-
-        document.getElementById('twitch-login').onclick = function() {
-            const redirectUri = 'https://coldshack.github.io/twitch_stream/callback';
-            const scope = 'user:read:chat'; // Adjust scopes as needed
-            const authUrl = `https://id.twitch.tv/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
-            window.location.href = authUrl;
-        };
     </script>
 </body>
 </html>
