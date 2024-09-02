@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Authentication</title>
+</head>
+<body>
+    <h1>Twitch Authentication Successful</h1>
+    <p id="user-id">Retrieving your Twitch User ID...</p>
+
+    <script>
+        const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Same as before
+
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            const accessToken = params.get('access_token');
+
+            if (accessToken) {
+                fetch('https://api.twitch.tv/helix/users', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Client-Id': clientId
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const userId = data.data[0].id;
+                    document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
