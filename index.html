@@ -158,6 +158,8 @@
 
     <script>
         const themeSlider = document.getElementById('theme-slider');
+        const streamIframe = document.getElementById('stream-container');
+        const chatIframe = document.getElementById('chat-container');
         const connectBtn = document.getElementById('connect-btn');
         const profileBtn = document.getElementById('profile-btn');
 
@@ -169,16 +171,37 @@
             profileBtn.style.display = 'block';
         }
 
+        function applyTheme(theme) {
+            document.body.className = theme;
+            const themeParams = {
+                'bg-light': {
+                    streamSrc: "https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io",
+                    chatSrc: "https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
+                },
+                'bg-dawn': {
+                    streamSrc: "https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io&darkpopout",
+                    chatSrc: "https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
+                },
+                'bg-night': {
+                    streamSrc: "https://player.twitch.tv/?channel=hot_shack&parent=coldshack.github.io&darkpopout",
+                    chatSrc: "https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
+                }
+            };
+            const { streamSrc, chatSrc } = themeParams[theme];
+            streamIframe.src = streamSrc;
+            chatIframe.src = chatSrc;
+        }
+
         themeSlider.oninput = function() {
             switch (this.value) {
                 case '1':
-                    document.body.className = 'bg-light';
+                    applyTheme('bg-light');
                     break;
                 case '2':
-                    document.body.className = 'bg-dawn';
+                    applyTheme('bg-dawn');
                     break;
                 case '3':
-                    document.body.className = 'bg-night';
+                    applyTheme('bg-night');
                     break;
             }
         };
