@@ -10,9 +10,8 @@
     <p id="user-id">Retrieving your Twitch User ID...</p>
 
     <script>
-        const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Same as before
+        const clientId = 'syvepx45yp2ufmzaf9ogo2luiqnrmj'; // Replace with your Twitch Client ID
         const mainPageUrl = 'https://coldshack.github.io/twitch_stream'; // Main screen URL
-
 
         if (window.location.hash) {
             const hash = window.location.hash.substring(1);
@@ -29,6 +28,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const userId = data.data[0].id;
+                    localStorage.setItem('twitchUserId', userId); // Store user ID in localStorage
                     document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
                     // Redirect to the main page after a delay
                     setTimeout(() => {
