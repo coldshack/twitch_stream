@@ -16,7 +16,7 @@
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
             const accessToken = params.get('access_token');
-
+        
             if (accessToken) {
                 fetch('https://api.twitch.tv/helix/users', {
                     headers: {
@@ -26,11 +26,17 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    const userId = data.data[0].id;
-                    document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
-                });
+                    if (data.data && data.data.length > 0) {
+                        const userId = data.data[0].id;
+                        document.getElementById('user-id').textContent = `Your Twitch User ID is: ${userId}`;
+                    } else {
+                        document.getElementById('user-id').textContent = 'Failed to fetch user data';
+                    }
+                })
+                .catch(error => document.getElementById('user-id').textContent = `Error: ${error.message}`);
             }
         }
+
     </script>
 </body>
 </html>
