@@ -1,4 +1,4 @@
-ezrg<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +19,11 @@ ezrg<!DOCTYPE html>
             flex-direction: column;
         }
 
-        #buttons-top{
-            align-items: center;
+        #buttons-top,
+        #buttons-bot {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
         }
 
         #content {
@@ -36,7 +39,6 @@ ezrg<!DOCTYPE html>
         }
 
         #chat-section{
-
             height: 100%;
             width: 20%; /* Set stream to 80% width */
             border: none; /* Removes the default border */
@@ -49,11 +51,9 @@ ezrg<!DOCTYPE html>
         }
 
         #test-button {
-            width: 100%;
             padding: 5px;
             text-align: center;
-            margin: 5px auto;
-            display: block;
+            margin: 5px;
         }
 
         /* Basic styling for the header */
