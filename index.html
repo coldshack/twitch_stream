@@ -6,6 +6,9 @@ ezrg<!DOCTYPE html>
     <title>My Twitch Stream</title>
     <style>
         /* Ensure that header is correctly positioned */
+        *{
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -164,10 +167,11 @@ ezrg<!DOCTYPE html>
 
         <div id="chat-section">
             <!-- Test Button Above the Chat -->
-            <button id="test-button">Test</button>
-            <button id="test-button">Test</button>
-            <button id="test-button">Test</button>
-
+            <div>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+            </div>
             <!-- Embedding the Twitch chat -->
             <iframe
                 id="chat-container"
@@ -177,9 +181,11 @@ ezrg<!DOCTYPE html>
             </iframe>
 
             <!-- Test Button Below the Chat -->
-            <button id="test-button">Test</button>
-            <button id="test-button">Test</button>
-            <button id="test-button">Test</button>
+            <div>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+            </div>
         </div>
     </div>
 
