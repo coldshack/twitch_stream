@@ -142,7 +142,7 @@ ezrg<!DOCTYPE html>
                 <div class="theme-labels">
                     <span>Light Mode</span>
                 </div>
-                <input type="range" id="theme-slider" min="1" max="3" value="1">
+                <input type="range" id="theme-slider" min="1" max="3" value="3">
                 <div class="theme-labels">
                     <span>Dark Mode</span>
                 </div>
@@ -165,6 +165,8 @@ ezrg<!DOCTYPE html>
         <div id="chat-section">
             <!-- Test Button Above the Chat -->
             <button id="test-button">Test</button>
+            <button id="test-button">Test</button>
+            <button id="test-button">Test</button>
 
             <!-- Embedding the Twitch chat -->
             <iframe
@@ -175,6 +177,8 @@ ezrg<!DOCTYPE html>
             </iframe>
 
             <!-- Test Button Below the Chat -->
+            <button id="test-button">Test</button>
+            <button id="test-button">Test</button>
             <button id="test-button">Test</button>
         </div>
     </div>
@@ -191,7 +195,7 @@ ezrg<!DOCTYPE html>
             connectBtn.style.display = 'none';
             profileBtn.style.display = 'block';
         }
-
+        document.body.className = 'bg-night';
         themeSlider.oninput = function() {
             switch (this.value) {
                 case '1':
