@@ -30,6 +30,8 @@
             display: flex;
             flex: 1;
             padding-top: 60px; /* Adjust based on header height */
+            transform: translateX(0); /* For shifting content */
+            transition: transform 0.3s ease; /* Smooth transition */
         }
 
         #stream-container {
@@ -274,10 +276,12 @@
             if (chatRight.style.display === 'block') {
                 chatRight.style.display = 'none';
                 chatLeft.style.display = 'block';
+                contentDiv.style.transform = 'translateX(20%)';
                 chatToggleBtn.textContent = 'Chat Position: Left';
             } else {
                 chatLeft.style.display = 'none';
                 chatRight.style.display = 'block';
+                contentDiv.style.transform = 'translateX(0)';
                 chatToggleBtn.textContent = 'Chat Position: Right';
             }
         };
