@@ -8,6 +8,7 @@ ezrg<!DOCTYPE html>
         /* Ensure that header is correctly positioned */
         *{
             font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            font-weight: bold;
         }
         body {
             margin: 0;
@@ -16,6 +17,10 @@ ezrg<!DOCTYPE html>
             height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        #buttons-top{
+            align-items: center;
         }
 
         #content {
@@ -167,7 +172,7 @@ ezrg<!DOCTYPE html>
 
         <div id="chat-section">
             <!-- Test Button Above the Chat -->
-            <div>
+            <div id="buttons-top">
                 <button id="test-button">Test</button>
                 <button id="test-button">Test</button>
                 <button id="test-button">Test</button>
@@ -181,7 +186,7 @@ ezrg<!DOCTYPE html>
             </iframe>
 
             <!-- Test Button Below the Chat -->
-            <div>
+            <div id="buttons-bot">
                 <button id="test-button">Test</button>
                 <button id="test-button">Test</button>
                 <button id="test-button">Test</button>
