@@ -23,14 +23,22 @@
 
         #stream-container {
             height: 100%;
-            width: 80%; /* Set stream to 70% width */
+            width: 80%; /* Set stream to 80% width */
             border: none; /* Removes the default border */
         }
 
         #chat-container {
             height: 90%;
-            width: 20%; /* Set chat to 30% width */
+            width: 20%; /* Set chat to 20% width */
             border: none; /* Removes the default border */
+        }
+
+        #test-button {
+            width: 20%;
+            padding: 10px;
+            text-align: center;
+            margin: 5px auto;
+            display: block;
         }
 
         /* Basic styling for the header */
@@ -147,14 +155,21 @@
             allowfullscreen="true">
         </iframe>
 
-        <!-- Embedding the Twitch chat -->
-        <iframe
-            id="chat-container"
-            src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
-            frameborder="0"
-            scrolling="no">
-        </iframe>
-        <button >Test</button>
+        <div id="chat-section">
+            <!-- Test Button Above the Chat -->
+            <button id="test-button">Test</button>
+
+            <!-- Embedding the Twitch chat -->
+            <iframe
+                id="chat-container"
+                src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
+                frameborder="0"
+                scrolling="no">
+            </iframe>
+
+            <!-- Test Button Below the Chat -->
+            <button id="test-button">Test</button>
+        </div>
     </div>
 
     <script>
