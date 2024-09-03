@@ -30,6 +30,8 @@
             display: flex;
             flex: 1;
             padding-top: 60px; /* Adjust based on header height */
+            transform: translateX(0); /* For shifting content */
+            transition: transform 0.3s ease; /* Smooth transition */
         }
 
         #stream-container {
@@ -38,12 +40,18 @@
             border: none; /* Removes the default border */
         }
 
-        #chat-section{
+        #chat-section-left,
+        #chat-section-right {
             height: 100%;
-            width: 20%; /* Set stream to 80% width */
-            border: none; /* Removes the default border */
+            width: 20%;
+            border: none;
+            display: none; /* Initially hidden */
         }
-            
+
+        #chat-section-right {
+            display: block; /* Initially visible */
+        }
+
         #chat-container {
             height: 90%;
             width: 100%; /* Set chat to 100% width */
@@ -157,10 +165,35 @@
             </div>
             <button id="profile-btn" style="display: none;">Profile</button>
             <button id="connect-btn">Connect to Twitch</button>
+            <button id="chat-toggle-btn" style="display: none;">Chat Position: Right</button>
         </div>
     </header>
 
     <div id="content">
+        <!-- Left Chat Section -->
+        <div id="chat-section-left">
+            <!-- Test Button Above the Chat -->
+            <div id="buttons-top">
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+            </div>
+            <!-- Embedding the Twitch chat -->
+            <iframe
+                id="chat-container"
+                src="https://www.twitch.tv/embed/hot_shack/chat?parent=coldshack.github.io&darkpopout"
+                frameborder="0"
+                scrolling="no">
+            </iframe>
+
+            <!-- Test Button Below the Chat -->
+            <div id="buttons-bot">
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+                <button id="test-button">Test</button>
+            </div>
+        </div>
+
         <!-- Embedding the Twitch stream -->
         <iframe
             id="stream-container"
@@ -170,7 +203,8 @@
             allowfullscreen="true">
         </iframe>
 
-        <div id="chat-section">
+        <!-- Right Chat Section -->
+        <div id="chat-section-right">
             <!-- Test Button Above the Chat -->
             <div id="buttons-top">
                 <button id="test-button">Test</button>
@@ -198,6 +232,10 @@
         const themeSlider = document.getElementById('theme-slider');
         const connectBtn = document.getElementById('connect-btn');
         const profileBtn = document.getElementById('profile-btn');
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const contentDiv = document.getElementById('content');
+        const chatLeft = document.getElementById('chat-section-left');
+        const chatRight = document.getElementById('chat-section-right');
 
         // Retrieve user ID from localStorage
         const userId = localStorage.getItem('twitchUserId');
@@ -205,6 +243,7 @@
         if (userId) {
             connectBtn.style.display = 'none';
             profileBtn.style.display = 'block';
+            chatToggleBtn.style.display = 'block';
         }
         document.body.className = 'bg-night';
         themeSlider.oninput = function() {
@@ -231,6 +270,20 @@
 
         profileBtn.onclick = function() {
             window.location.href = 'https://coldshack.github.io/twitch_stream'; // Replace with profile page URL
+        };
+
+        chatToggleBtn.onclick = function() {
+            if (chatRight.style.display === 'block') {
+                chatRight.style.display = 'none';
+                chatLeft.style.display = 'block';
+                contentDiv.style.transform = 'translateX(20%)';
+                chatToggleBtn.textContent = 'Chat Position: Left';
+            } else {
+                chatLeft.style.display = 'none';
+                chatRight.style.display = 'block';
+                contentDiv.style.transform = 'translateX(0)';
+                chatToggleBtn.textContent = 'Chat Position: Right';
+            }
         };
     </script>
 </body>
